@@ -6,7 +6,7 @@ void delete();
 void display();  
 int front = -1, rear = -1;  
 int queue[maxsize];  
-void main ()  
+void main ()  //implementing Queue
 {  
     int choice;   
     while(choice != 4)   
