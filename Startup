@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+class distance1{
+    int feet,inch;
+
+public:
+    void getdata()
+    {
+        cout<<"enter feet:";
+        cin>>feet;
+        cout<<"enter inch:";
+        cin>>inch;
+    }
+    void showdata(){
+        cout<<"distance="<<feet<<"feet"<<inch<<"inch";
+    }
+    void add1(distance1 *p,distance1 *q)
+    {
+        inch= p->inch+q->inch;
+        feet=p->feet+q->feet+(inch*1.0/12);
+        inch=inch%12;
+    }
+};
+
+int main() {
+
+    distance1 d1,d2,d3;
+
+    d1.getdata();
+    d2.getdata();
+    d3.add1(&d1,&d2);
+    d3.showdata();
+
+    return 0;
+}
+
+
+
