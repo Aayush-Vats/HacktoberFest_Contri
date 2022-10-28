@@ -1,0 +1,117 @@
+#include <stdio.h>
+int r1=-1,f1=-1,r2=-1,f2=-1,m1=5,m2=5;
+int arrs1[5],arrs2[5];
+void I1(int i);
+void I2(int i);
+void del();
+void d1();
+void d2();
+int main() {
+    int data,c;
+    while(1){
+        printf("1=ENQUEUE\n");
+        printf("2=INSERT\n");
+        printf("3=DELETE\n");
+        printf("4=DISPLAY\n");
+        printf("5=EXIT\n");
+        printf("Choose option");
+        scanf("%d",&c);
+        switch (c) {
+            case 1:{
+                printf("Enter data:");
+                scanf("%d",&data);
+                if(data%2==0){
+                    I1(data);
+                }
+                else
+                    I2(data);
+                continue;
+            }
+            case 2:{
+                printf("Enter data:");
+                scanf("%d",&data);
+                if(data%2==0){
+                    if(r1!=4){
+                        I1(data);
+                    }
+                    else
+                        I2(data);
+                }
+                continue;
+            }
+            case 3:{
+                del();
+            }
+            case 4: {
+                printf("Even number:\n");
+                d1();
+                printf("\n");
+                printf("Odd num\n");
+                d2();
+                continue;
+            }
+            case 5:
+                return 0;
+        }
+    }
+}
+void I1(int i){
+    if (r1 == m1 - 1)
+        printf("Queue Overflow \n");
+    else
+    {
+        if (f1 == - 1)
+            f1 = 0;
+        r1 = r1 + 1;
+        arrs1[r1] = i;
+    }
+}
+
+void I2(int i){
+    if (r2 == m2 - 1)
+        printf("Queue Overflow \n");
+    else
+    {
+        if (f2 == - 1)
+            f2 = 0;
+        r2 = r2 + 1;
+        arrs2[r2] = i;
+    }
+}
+void d1()
+{
+    int i;
+    if (f1 == - 1)
+        printf("Queue is empty \n");
+    else
+    {
+        printf("\n");
+        for (i = f1; i <= r1; i++)
+            printf("%d ", arrs1[i]);
+        printf("\n");
+    }
+}
+void d2()
+{
+    int i;
+    if (f2 == - 1)
+        printf("Queue is empty \n");
+    else
+    {
+        printf("\n");
+        for ( i= f2; i <= r2; i++)
+            printf("%d ", arrs2[i]);
+        printf("\n");
+    }
+}
+void del(){
+    if(r1>r1){
+        f1++;
+        ++r2;
+    }
+    else {
+        f2++;
+        ++r1;
+    }
+
+}
