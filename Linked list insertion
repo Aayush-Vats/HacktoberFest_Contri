@@ -1,0 +1,153 @@
+#include <stdio.h>
+#include <stdlib.h>
+   struct node{
+     int data;
+     struct node *next;
+     
+   }*head;
+void createlist (int n);
+void insertatbeg(int data);
+void insetend( int m);
+void middle(int data, int pos);
+void traverse();
+int main()
+{
+    int data, pos;
+    int n,m;
+    printf("enter the no of nodes:");
+    scanf("%d",&n);
+    printf("displaying the linked list :");
+    createlist(n);
+    printf("printing the lined list:");
+    traverse();
+    printf("addinging new data");
+    printf("enter the data to be added at the begining :");
+    scanf("%d",&data);
+    insertatbeg( data);
+     printf("after adding\n ");
+    traverse();
+    printf("entering at the end:");
+    printf("enter the data u want to enter at the end:");
+    scanf("%d",&data);
+    insetend(data);
+    printf("after adding\n ");
+    traverse();
+    printf("enterint the node at the middle :\n");
+    printf("enter the position where u want to the node: ");
+    scanf("%d",&pos);
+    printf("enter the data:");
+    scanf("%d",&data);
+    middle(data, pos);
+    printf("after insertion");
+      traverse();
+    
+    
+    
+    
+    
+    return 0;
+}
+void createlist (int n){
+    struct node *temp,*newnode;
+    int i,data;
+    head = (struct node *)malloc(sizeof(struct node));
+    if (head == NULL){
+        printf("ewww");
+        exit(0);
+    }
+    printf(" enter the data in the 1:");
+    scanf("%d",&data);
+    head->data=data;
+    head->next=NULL;
+    temp=head;
+    for (i=2;i<=n;i++){
+        newnode=(struct node *)malloc(sizeof(struct node));
+        if (newnode == NULL){
+            printf("ewww");
+            break;
+        }
+        printf("enter the data in %d:",i);
+        scanf("%d",&data);
+        newnode->data=data;
+        newnode->next=NULL;
+        temp->next= newnode;
+        temp= temp->next;
+        
+    }
+    }
+
+void insertatbeg(int data){
+    struct node*newnode;
+    
+    newnode=(struct node *)malloc(sizeof(struct node));
+    if (newnode == NULL){
+        printf("ewww");
+        exit(0);
+    }
+    else{
+    newnode->data=data;
+    newnode->next=head;
+    head = newnode;
+    }
+    
+}
+void insetend( int data){
+    struct node*newnode,*temp;
+     
+    newnode=(struct node *)malloc(sizeof(struct node));
+    
+    if (newnode == NULL){
+        printf("ewww");
+        exit(0);
+    }
+    else{
+        newnode->data=data;
+        newnode->next=NULL;
+        temp=head;
+        while(temp!= NULL && temp->next!= NULL)
+            temp=temp->next;
+            temp->next=newnode;
+        
+    }
+    
+    
+}
+void middle(int data, int pos){
+    struct node*newnode,*temp;
+     newnode=(struct node *)malloc(sizeof(struct node));
+    
+    if (newnode == NULL){
+        printf("ewww");
+        exit(0);
+    }
+    else{
+        newnode->data=data;
+        newnode->next=NULL;
+         temp= head;
+         for( int i=2;i<=pos-1;i++){
+             temp=temp->next;
+             if (temp == NULL)
+             break;
+             
+             }
+             if (temp != NULL){
+                 newnode->next=temp->next;
+                 temp->next=newnode;
+                 
+             }
+         }
+    }
+    
+
+void traverse(){
+    struct node*temp;
+    if (head == NULL){
+        printf("eww");
+    }
+    temp = head;
+    while(temp!=NULL){
+        printf("data-%d \n",temp->data);
+        temp= temp->next;
+    }
+    
+}
